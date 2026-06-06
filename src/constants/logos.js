@@ -1,0 +1,26 @@
+// Mock client / brand wordmarks for the trust marquee.
+// Replace with real brand names (or swap to <img> logos later).
+export const LOGOS = [
+  "ريز",
+  "عروض",
+  "Nova",
+  "بيوت",
+  "Lumen",
+  "تمارا",
+  "Pulse",
+  "ديار",
+  "Vertex",
+  "صناع",
+  "Orbit",
+  "مذاق",
+  "Apex",
+  "واحة",
+  "Zen",
+  "رؤية",
+  "Stellar",
+  "نخبة",
+  "Forge",
+  "مرسى",
+  "Echo",
+  "قمم",
+];
