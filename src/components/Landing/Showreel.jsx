@@ -15,6 +15,22 @@ const Showreel = () => {
   const items = SHOWREEL_ITEMS.filter((v) => v.cat === tab);
   const isVertical = items[0]?.ratio === "9/16";
 
+  const onTiltMove = (e) => {
+    const card = e.currentTarget;
+    const r = card.getBoundingClientRect();
+    const relX = (e.clientX - r.left) / r.width;
+    const relY = (e.clientY - r.top) / r.height;
+    card.style.setProperty("--ry", `${(relX - 0.5) * 16}deg`);
+    card.style.setProperty("--rx", `${(0.5 - relY) * 16}deg`);
+    card.style.setProperty("--tz", "14px");
+  };
+  const onTiltLeave = (e) => {
+    const card = e.currentTarget;
+    card.style.setProperty("--ry", "0deg");
+    card.style.setProperty("--rx", "0deg");
+    card.style.setProperty("--tz", "0px");
+  };
+
   // Close the lightbox on Escape and lock body scroll while it's open.
   useEffect(() => {
     if (!active) return;
@@ -67,7 +83,10 @@ const Showreel = () => {
             <Reveal key={v.id} delay={i * 90}>
               <button
                 onClick={() => setActive(v)}
-                className="group relative w-full overflow-hidden rounded-2xl block"
+                onMouseMove={onTiltMove}
+                onMouseLeave={onTiltLeave}
+                data-cursor-hover
+                className="group relative w-full overflow-hidden rounded-2xl block tilt-card"
                 style={{ aspectRatio: v.ratio, border: "1px solid var(--border)" }}
                 aria-label={t(v.title)}
               >

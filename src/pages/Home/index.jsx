@@ -1,6 +1,8 @@
 import React from "react";
+import Experience from "../../components/Experience";
 import Navbar from "../../components/Landing/Navbar";
 import Hero from "../../components/Landing/Hero";
+import Statement from "../../components/Landing/Statement";
 import LogoMarquee from "../../components/Landing/LogoMarquee";
 import Stats from "../../components/Landing/Stats";
 import Problem from "../../components/Landing/Problem";
@@ -21,9 +23,11 @@ import WhatsAppFab from "../../components/Landing/WhatsAppFab";
 const Home = () => {
   return (
     <>
+      <Experience />
       <Navbar />
       <main>
         <Hero />
+        <Statement />
         <LogoMarquee />
         <Stats />
         <Problem />

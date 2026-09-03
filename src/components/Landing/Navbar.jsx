@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NAV, HERO } from "../../constants/content";
 import { useT } from "../../utils/i18n";
+import { scrollToTarget, scrollToTop } from "../../utils/smoothScroll";
 import ThemeToggle from "../ThemeToggle";
 import { MenuIcon, CloseIcon } from "../Icons";
 
@@ -18,8 +19,7 @@ const Navbar = () => {
 
   const go = (id) => {
     setOpen(false);
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    scrollToTarget(id);
   };
 
   return (
@@ -33,7 +33,7 @@ const Navbar = () => {
       }}
     >
       <nav className="container-x flex items-center justify-between h-[72px]">
-        <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center gap-2 font-extrabold text-lg">
+        <button onClick={scrollToTop} className="flex items-center gap-2 font-extrabold text-lg">
           <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white" style={{ background: "var(--accent)" }}>A</span>
           <span style={{ color: "var(--text)" }}>ادهموشن<span className="text-gradient">.</span></span>
         </button>

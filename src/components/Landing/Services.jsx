@@ -4,8 +4,7 @@ import { SERVICES_SECTION } from "../../constants/content";
 import { useT } from "../../utils/i18n";
 import { SERVICE_ICONS, ArrowIcon } from "./icons";
 import Reveal from "./Reveal";
-
-const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+import { scrollToTarget as scrollTo } from "../../utils/smoothScroll";
 
 const Services = () => {
   const { t, language, isAr } = useT();

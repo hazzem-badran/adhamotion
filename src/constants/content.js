@@ -344,6 +344,19 @@ export const TESTIMONIALS_SECTION = {
   },
 };
 
+// Bold looping headline between the trust bar and the Problem section —
+// pure visual energy, no CTA. Words alternate outline/filled style.
+export const STATEMENT = {
+  words: [
+    { en: "MOTION", ar: "موشن" },
+    { en: "STORY", ar: "قصة" },
+    { en: "RHYTHM", ar: "إيقاع" },
+    { en: "IMPACT", ar: "تأثير" },
+    { en: "MOTION", ar: "موشن" },
+    { en: "EDIT", ar: "مونتاج" },
+  ],
+};
+
 export const WHATSAPP = {
   // Mock number — replace with Adham's real WhatsApp number (international format, no +).
   number: "966500000000",

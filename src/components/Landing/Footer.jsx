@@ -2,11 +2,12 @@ import React from "react";
 import { FOOTER, NAV } from "../../constants/content";
 import { SOCIALS } from "../../constants/socials";
 import { useT } from "../../utils/i18n";
+import { scrollToTarget } from "../../utils/smoothScroll";
 
 const Footer = () => {
   const { t } = useT();
   const year = new Date().getFullYear();
-  const go = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const go = (id) => scrollToTarget(id);
 
   return (
     <footer style={{ borderTop: "1px solid var(--border)", background: "var(--bg-elevated)" }}>

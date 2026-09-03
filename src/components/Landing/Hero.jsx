@@ -1,9 +1,11 @@
 import React from "react";
 import { HERO, TRUST } from "../../constants/content";
 import { useT } from "../../utils/i18n";
-import { ArrowIcon, PlayIcon } from "./icons";
-
-const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+import { ArrowIcon } from "./icons";
+import KineticText from "./KineticText";
+import RotatingSeal from "./RotatingSeal";
+import Magnetic from "../Experience/Magnetic";
+import { scrollToTarget as scrollTo } from "../../utils/smoothScroll";
 
 const Hero = () => {
   const { t, isAr } = useT();
@@ -25,8 +27,8 @@ const Hero = () => {
             </span>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight mt-4">
-              <span style={{ color: "var(--text)" }}>{title[0]} </span>
-              <span className="text-gradient-anim">{title[1]}</span>
+              <KineticText text={title[0]} tag="span" className="block" style={{ color: "var(--text)" }} />
+              <KineticText text={title[1]} tag="span" className="block" wordClassName="text-gradient-anim" delay={0.25} />
             </h1>
 
             <p className="mt-6 text-base md:text-lg muted max-w-xl leading-relaxed mx-0">
@@ -34,13 +36,17 @@ const Hero = () => {
             </p>
 
             <div className={`mt-8 flex flex-wrap gap-3 ${isAr ? "justify-end" : ""}`}>
-              <button onClick={() => scrollTo("contact")} className="btn-primary">
-                {t(HERO.primaryCta)}
-                <ArrowIcon className={isAr ? "w-4 h-4 rotate-180" : "w-4 h-4"} />
-              </button>
-              <button onClick={() => scrollTo("work")} className="btn-ghost">
-                {t(HERO.secondaryCta)}
-              </button>
+              <Magnetic strength={0.4}>
+                <button onClick={() => scrollTo("contact")} className="btn-primary">
+                  {t(HERO.primaryCta)}
+                  <ArrowIcon className={isAr ? "w-4 h-4 rotate-180" : "w-4 h-4"} />
+                </button>
+              </Magnetic>
+              <Magnetic strength={0.4}>
+                <button onClick={() => scrollTo("work")} className="btn-ghost">
+                  {t(HERO.secondaryCta)}
+                </button>
+              </Magnetic>
             </div>
 
             <p className="mt-4 text-xs muted">{t(HERO.microcopy)}</p>
@@ -58,13 +64,9 @@ const Hero = () => {
                 >
                   <span className="absolute inset-0 grid-bg opacity-30" />
                   <span className="text-white font-extrabold leading-none" style={{ fontSize: "5.5rem" }}>أ</span>
-                  <span className="absolute bottom-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-white text-xs font-semibold"
-                        style={{ background: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.4)" }}>
-                    <PlayIcon className="w-3.5 h-3.5" />
-                    Adhamotion
-                  </span>
                 </div>
               </div>
+
               <div
                 className="absolute -bottom-4 -left-4 surface px-4 py-3 rounded-xl shadow-lg float-slow"
                 style={{ boxShadow: "0 20px 40px -20px rgba(0,0,0,0.4)" }}
@@ -74,6 +76,10 @@ const Hero = () => {
                   <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: "#2ecc71" }} />
                   <span className="text-sm font-semibold" style={{ color: "var(--text)" }}>أدهم</span>
                 </div>
+              </div>
+
+              <div className="absolute -top-6 -right-6 hidden sm:block">
+                <RotatingSeal size={104} />
               </div>
             </div>
           </div>
